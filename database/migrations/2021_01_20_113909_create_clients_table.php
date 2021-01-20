@@ -22,6 +22,7 @@ class CreateClientsTable extends Migration
             $table->string('contact_name')->nullable();
             $table->text('contact_office')->nullable();
             $table->text('contact_email')->nullable();
+            $table->string('image')->nullable();
             $table->enum('type', ['individual', 'organization']);
             $table->timestamps();
         });
