@@ -5,12 +5,34 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 import App from "./App.vue";
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+import Home from "./components/Home";
+import ClientList from "./components/ClientList";
+import AddClient from "./components/AddClient";
 
-const app = new Vue({
-    el: "#app"
-});
+import VueSweetAlert2 from "vue-sweetalert2";
+window.Swal = require("sweetalert2");
+Vue.use(VueSweetAlert2);
+
+import VueAxios from "vue-axios";
+import axios from "axios";
+Vue.use(VueAxios, axios);
+
+const routes = [{
+        name: "/",
+        path: "/",
+        component: Home
+    },
+    {
+        name: "/clients",
+        path: "/clients",
+        component: ClientList
+    },
+    {
+        name: "/add clients",
+        path: "/clients/add",
+        component: AddClient
+    }
+];
+
+const router = new VueRouter({ mode: "history", routes: routes });
+const app = new Vue(Vue.util.extend({ router }, App)).$mount("#app");
